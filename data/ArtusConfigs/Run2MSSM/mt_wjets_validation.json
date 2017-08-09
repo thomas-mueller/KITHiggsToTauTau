@@ -151,7 +151,8 @@
                         "genBosonMass",
                         "genBosonPt",
                         "genBosonEta",
-                        "genBosonPhi"
+                        "genBosonPhi",
+                        "genBosonLVFound"
 		],
 		"OSChargeLeptons" : true,
                 "ZMassRange" : 5.0,

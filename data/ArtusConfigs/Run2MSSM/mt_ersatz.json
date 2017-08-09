@@ -65,10 +65,13 @@
 				}
 		},
 		"WJetsErsatzReweightingWorkspaceWeightNames" : [
+                    "0:wjetsErsatzWeight"
 		],
 		"WJetsErsatzReweightingWorkspaceObjectNames" : [
+                    "0:wjets_ersatz_weight"
 		],
 		"WJetsErsatzReweightingWorkspaceObjectArguments" : [
+                    "0:z_gen_pt,z_gen_eta"
 		],
 		"TauID" : "TauIDRecommendation13TeV",
 		"TauUseOldDMs" : true,
