@@ -166,12 +166,14 @@
                         "genBosonMass",
                         "genBosonPt",
                         "genBosonEta",
-                        "genBosonPhi"
+                        "genBosonPhi",
+                        "wjetsErsatzWeight"
 		],
 		"OSChargeLeptons" : true,
                 "ZMassRange" : 30.0,
                 "VetoMultipleZs": false,
 		"TopPtReweightingStrategy" : "Run1",
+                "SaveWJetsErsatzReweightingAsOptionalOnly" : true,
 		"Processors" : {
 			"nick" : {
 				"default" : [

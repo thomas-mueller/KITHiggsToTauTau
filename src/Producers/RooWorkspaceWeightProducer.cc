@@ -390,4 +390,39 @@ WJetsErsatzReweightingProducer::WJetsErsatzReweightingProducer() :
 void WJetsErsatzReweightingProducer::Produce( event_type const& event, product_type & product,
 						   setting_type const& settings) const
 {
+    assert(m_weightNames.size() == 1);
+    //std::cout << std::endl << "WJetsErsatzReweightingProducer is running" << std::endl;
+    for(auto weightNames:m_weightNames)
+    {
+        //std::cout << "Listing weights for index " << weightNames.first << std::endl;
+        for(unsigned int index = 0; index < weightNames.second.size(); index ++)
+        {
+            //std::cout << "weight name: " << weightNames.second.at(index) << std::endl;
+            auto args = std::vector<double>{};
+            std::vector<std::string> arguments;
+            boost::split(arguments,  m_functorArgs.at(weightNames.first).at(index) , boost::is_any_of(","));
+            //std::cout << "weight computed from the following arguments: " << std::endl;
+            for(auto arg:arguments)
+            {
+                //std::cout << arg << " ";
+                if(arg == "z_gen_pt")
+                {
+                        args.push_back(product.m_genBosonLV.Pt());
+                }
+                if(arg == "z_gen_eta")
+                {
+                        args.push_back(product.m_genBosonLV.Eta());
+                }
+            }
+            if(m_saveTriggerWeightAsOptionalOnly)
+            {
+                    product.m_optionalWeights[weightNames.second.at(index)] = m_functors.at(weightNames.first).at(index)->eval(args.data());
+            }
+            else
+            {
+                    product.m_weights[weightNames.second.at(index)]= m_functors.at(weightNames.first).at(index)->eval(args.data());
+            }
+            //std::cout << std::endl;
+        }
+    }
 }
