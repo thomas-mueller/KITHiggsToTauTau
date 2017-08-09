@@ -13,7 +13,7 @@ from multiprocessing import Pool
 
 parser = argparse.ArgumentParser(description='Script to calculate Z->tautau over Z->mumu ratios under mu_F and mu_R scale variations.')
 parser.add_argument('--input-LO-TTbar',help="path to Artus files (wildcard notation possible) for leading order TTbar. For now only one should be specified (no stitching).",type=str)
-parser.add_argument('--input-NLO-TTbar',help="path to Artus files (wildcard notation possible) for next to leading order TTba. For now only one should be specified (no stitching).",type=str)
+parser.add_argument('--input-NLO-TTbar',help="path to Artus files (wildcard notation possible) for next to leading order TTbar. Please specify exclusive samples only (no stitching).",type=str)
 
 args = parser.parse_args()
 
@@ -98,12 +98,12 @@ inputDYfiles = args.input_LO_TTbar
 
 lo_ttbar_file = glob.glob(inputDYfiles)[0]
 
-inputttbarNLOfile = glob.glob(args.input_NLO_TTbar)[0]
+inputttbarNLOfiles = glob.glob(args.input_NLO_TTbar)
 
 def scale_variation_ttbar_cr(argument=("1","1")):
 	mm = r.TChain()
-	f = inputttbarNLOfile
-	mm.Add(f+"/em_nominal/ntuple")
+	for f in inputttbarNLOfiles:
+		mm.Add(f+"/em_nominal/ntuple")
 	hist_name = "ttbar_cr_hist"+"_"+argument[0] + "_" + argument[1]
 	ttbar_cr_hist = r.TH1D(hist_name,hist_name,1,0,13000)
 	mm.Project(hist_name,"m_vis",str(argument[0]+"*"+ttbar_cr_weights[argument[1]]),"GOFF")
@@ -114,8 +114,8 @@ def scale_variation_tt(argument=("1","1","folder_string")):
 	sel = r.TChain()
 	category =  argument[1].split("_")[1]
 	ttbar_cr_weight = "ttbar_cr_"+"inclusive"
-	f = inputttbarNLOfile
-	sel.Add(f+argument[2])
+	for f in inputttbarNLOfiles:
+		sel.Add(f+argument[2])
 	hist_name = "sel_hist"+"_"+argument[0] + "_" + argument[1]
 	sel_hist = r.TH1D(hist_name,hist_name,1,0,13000)
 	sel.Project(hist_name,"m_vis",str(argument[0]+"*"+weights[argument[1]]),"GOFF")
