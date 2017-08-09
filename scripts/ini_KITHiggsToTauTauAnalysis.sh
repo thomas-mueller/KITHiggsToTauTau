@@ -16,10 +16,6 @@ export PATH=${CMSSW_BASE}/src/grid-control/:${CMSSW_BASE}/src/grid-control/scrip
 cp $KITHIGGSTOTAUTAUPATH/data/tauspinner.xml $CMSSW_BASE/config/toolbox/$SCRAM_ARCH/tools/selected/tauspinner.xml
 scram setup tauspinner
 
-#setup FastBDT
-cp $KITHIGGSTOTAUTAUPATH/data/fastbdt.xml $CMSSW_BASE/config/toolbox/$SCRAM_ARCH/tools/selected/fastbdt.xml
-scram setup fastbdt
-
 if [ "$1" != "no-links" ]
 then
 	if [ command -v symlinks > /dev/null 2>&1 ]; then
@@ -37,8 +33,6 @@ else
 	echo "Link creation deactivated"
 
 fi
-# FastBDT
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CMSSW_BASE}/src/FastBDT/
 
 # overwrite artus settings
 if [[ `hostname` == *naf* ]]; then
