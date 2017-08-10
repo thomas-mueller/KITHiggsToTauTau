@@ -42,24 +42,51 @@
 					"Embedding201" : "$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/root/scaleFactorWeights/htt_scalefactors_v16_5_embedding.root"
 				}
 		},
-		"RooWorkspaceWeightNames" : [
-			"0:triggerWeight",
-			"0:isoweight",
-			"0:idweight",
-			"0:trackWeight"
-		],
-		"RooWorkspaceObjectNames" : [
-			"0:m_trgOR4_binned_ratio",
-			"0:m_iso_binned_ratio",
-			"0:m_id_ratio",
-			"0:m_trk_ratio"
-		],
-		"RooWorkspaceObjectArguments" : [
-			"0:m_pt,m_eta,m_iso",
-			"0:m_pt,m_eta,m_iso",
-			"0:m_pt,m_eta",
-			"0:m_eta"
-		],
+		"RooWorkspaceWeightNames" : {
+		"nick" : {
+			"default" : [
+				"0:triggerWeight",
+				"0:isoweight",
+				"0:idweight",
+				"0:trackWeight"
+						],
+			"Embedding201" : [
+				"0:isoweight",
+				"0:idweight",
+				"0:trackWeight"
+							]
+				}
+		},
+		"RooWorkspaceObjectNames" : {
+		"nick" : {
+			"default" : [
+				"0:m_trgOR4_binned_ratio",
+				"0:m_iso_binned_ratio",
+				"0:m_id_ratio",
+				"0:m_trk_ratio"
+						],
+			"Embedding201" : [
+				"0:m_iso_binned_ratio",
+				"0:m_id_ratio",
+				"0:m_trk_ratio"
+							]
+				}
+		},
+		"RooWorkspaceObjectArguments" : {
+		"nick" : {
+			"default" : [
+				"0:m_pt,m_eta,m_iso",
+				"0:m_pt,m_eta,m_iso",
+				"0:m_pt,m_eta",
+				"0:m_eta"
+			],
+			"Embedding201" : [
+				"0:m_pt,m_eta,m_iso",
+				"0:m_pt,m_eta",
+				"0:m_eta"
+						]
+				}
+		},
 		"FakeFaktorFiles" : [
 			"inclusive:$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/root/fakeFactorWeights/tight/mt/inclusive/fakeFactors_20170628_tight.root",
 			"nobtag_tight:$CMSSW_BASE/src/HiggsAnalysis/KITHiggsToTauTau/data/root/fakeFactorWeights/tight/mt/nobtag_tight/fakeFactors_20170628_tight.root",
