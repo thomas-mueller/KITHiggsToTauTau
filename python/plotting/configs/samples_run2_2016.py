@@ -273,11 +273,11 @@ class Samples(samples.SamplesBase):
 			if channel == "et":
 				if not 'eventWeight' in mc_sample_weight:
 					mc_sample_weight+="*eventWeight"
-				return make_multiplication([mc_sample_weight, weight, self.embedding_stitchingweight(channel), "1.00369428224*(eventWeight<1.0)",self.embedding_weight[1]])
+				return make_multiplication([mc_sample_weight, weight, self.embedding_stitchingweight(channel), "1.01277799011*(eventWeight<1.0)",self.embedding_weight[1]])
 			elif channel == "mt":
 				if not 'eventWeight' in mc_sample_weight:
 					mc_sample_weight+="*eventWeight"
-				return make_multiplication([mc_sample_weight,  weight, self.embedding_stitchingweight(channel), "1.04266772024*(eventWeight<1.0)",self.embedding_weight[0]])			
+				return make_multiplication([mc_sample_weight,  weight, self.embedding_stitchingweight(channel), "1.0313850801*(eventWeight<1.0)",self.embedding_weight[0]])			
 			elif channel == "tt":
 				if not 'eventWeight' in mc_sample_weight:
 					mc_sample_weight+="*eventWeight"

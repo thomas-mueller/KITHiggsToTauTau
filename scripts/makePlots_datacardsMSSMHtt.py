@@ -311,6 +311,8 @@ if __name__ == "__main__":
 	parser.add_argument("-o", "--output-dir",
 	                    default="$CMSSW_BASE/src/plots/htt_datacards/",
 	                    help="Output directory. [Default: %(default)s]")
+	parser.add_argument("--emb", default=False, action="store_true",
+	                    help="Use embedded samples. [Default: %(default)s]")
 	parser.add_argument("-p", "--postfix",
 	                    default="",
 	                    help="Postfix for the datacard root files. [Default: %(default)s]")
@@ -346,7 +348,7 @@ if __name__ == "__main__":
 		args.lumi = samples.default_lumi/1000.0
 	
 	# initialisations for plotting
-	sample_settings = samples.Samples()
+	sample_settings = samples.Samples(embedding=args.emb)
 	binnings_settings = binnings.BinningsDict()
 	systematics_factory = systematics.SystematicsFactory()
 	
