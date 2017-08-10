@@ -19,101 +19,18 @@ import HiggsAnalysis.KITHiggsToTauTau.plotting.configs.systematics_run2 as syste
 
 samples_dict = {
 		'et' : [
-			("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
-			("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("etaues1prong0pi", ["zl","wj","qcd"]),
-			("etaues1prong1pi", ["zl","wj","qcd"]),
-			("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("zpt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptes",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
-			("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','ggh','bbh']),
 			('nominal',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
 		],
 		'mt' : [
-			("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
-			("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("zpt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptes",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
-			("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','ggh','bbh']),
 			('nominal',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
 		],
 		'tt' : [
-			("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
-			("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
-			("zpt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptes",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
-			("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
-			("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
-			("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','ggh','bbh']),
 			('nominal',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
 		],
 		'em' : [
-			("toppt",["ttj"]),("taues",["ztt","ggh","bbh"]),
-			("zpt",["ztt","zll"]),
-			("zptes",["ztt","zll"]),
-			("zptstat0pt",["ztt","zll"]),
-			("zptstat40pt",["ztt","zll"]),
-			("zptstat80pt",["ztt","zll"]),
-			("zptttbar",["ztt","zll"]),
-			('btag',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('mistag',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('metrecoilscale',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('metrecoilreso',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('metjeten',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('metunclustereden',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
-			('jec',['ztt','zll','ttj','vv','ggh','bbh']),
 			('nominal',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh'])
 		],
 		'mm' : [
-			("toppt",["ttj","wj","qcd"]),
-			("zpt",["ztt","zll","wj","qcd"]),
-			("wfake",['ztt','zll','ttj','vv','wj','qcd']),
-			('btag',['ztt','zll','ttj','vv','wj','qcd']),
-			('mistag',['ztt','zll','ttj','vv','wj','qcd']),
-			('metrecoilscale',['ztt','zll','ttj','vv','wj','qcd']),
-			('metrecoilreso',['ztt','zll','ttj','vv','wj','qcd']),
-			('metjeten',['ztt','zll','ttj','vv','wj','qcd']),
-			('metunclustereden',['ztt','zll','ttj','vv','wj','qcd']),
-			('jec',['ztt','zl','zj','ttj','vv','ggh','bbh']),
 			('nominal',['ztt','zll','ttj','vv','wj','qcd'])
 		]
 	}
@@ -243,6 +160,146 @@ mapping_process2sample = {
 	"ZH" : "zh",
 }
 
+def fill_samples_dict(keys):
+	if "limits" in keys or "all" in keys:
+		samples_dict['et'].extend((
+			("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
+			("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("etaues1prong0pi", ["zl","wj","qcd"]),
+			("etaues1prong1pi", ["zl","wj","qcd"]),
+			("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("zpt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptes",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
+			("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['mt'].extend((
+			("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
+			("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("zpt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptes",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
+			("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['tt'].extend((
+			("toppt",["ttj",'ttt','ttjj',"wj","qcd"]),
+			("taues1prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("taues1prong1pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("taues3prong0pi",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("taupt",["ztt","ttt", "vvt","wj","qcd","ggh","bbh"]),
+			("zpt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptes",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptstat0pt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptstat40pt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptstat80pt",["ztt","zll","zj","zl","wj","qcd"]),
+			("zptttbar",["ztt","zll","zj","zl","wj","qcd"]),
+			("wfake",['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['em'].extend((
+			("toppt",["ttj"]),("taues",["ztt","ggh","bbh"]),
+			("zpt",["ztt","zll"]),
+			("zptes",["ztt","zll"]),
+			("zptstat0pt",["ztt","zll"]),
+			("zptstat40pt",["ztt","zll"]),
+			("zptstat80pt",["ztt","zll"]),
+			("zptttbar",["ztt","zll"])
+		))
+		samples_dict['mm'].extend((
+			("toppt",["ttj","wj","qcd"]),
+			("zpt",["ztt","zll","wj","qcd"]),
+			("wfake",['ztt','zll','ttj','vv','wj','qcd'])
+		))
+	if "btag" in keys or "all" in keys:
+		samples_dict['et'].extend((
+			('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['mt'].extend((
+			('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['tt'].extend((
+			('btag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			('mistag',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['em'].extend((
+			('btag',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
+			('mistag',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['mm'].extend((
+			('btag',['ztt','zll','ttj','vv','wj','qcd']),
+			('mistag',['ztt','zll','ttj','vv','wj','qcd'])
+		))
+	if "metrecoil" in keys or "all" in keys:
+		samples_dict['et'].extend((
+			('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['mt'].extend((
+			('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['tt'].extend((
+			('metrecoilscale',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			('metrecoilreso',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['em'].extend((
+			('metrecoilscale',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
+			('metrecoilreso',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['mm'].extend((
+			('metrecoilscale',['ztt','zll','ttj','vv','wj','qcd']),
+			('metrecoilreso',['ztt','zll','ttj','vv','wj','qcd'])
+		))
+	if "metenergy" in keys or "all" in keys:
+		samples_dict['et'].extend((
+			('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['mt'].extend((
+			('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['tt'].extend((
+			('metjeten',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh']),
+			('metunclustereden',['ztt','zll','zl','zj','ttj','ttt','ttjj','vv','vvt','vvj','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['em'].extend((
+			('metjeten',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh']),
+			('metunclustereden',['ztt','zll','ttj','vv','wj','qcd','ggh','bbh'])
+		))
+		samples_dict['mm'].extend((
+			('metjeten',['ztt','zll','ttj','vv','wj','qcd']),
+			('metunclustereden',['ztt','zll','ttj','vv','wj','qcd'])
+		))
+	if "jec" in keys or "all" in keys:
+		samples_dict['et'].extend((
+			("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','ggh','bbh'])
+		))
+		samples_dict['mt'].extend((
+			("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','ggh','bbh'])
+		))
+		samples_dict['tt'].extend((
+			("jec", ['ztt','zl','zj','ttt','ttjj','vvt','vvj','ggh','bbh'])
+		))
+		samples_dict['em'].extend((
+			('jec',['ztt','zll','ttj','vv','ggh','bbh'])
+		))
+		samples_dict['mm'].extend((
+			('jec',['ztt','zl','zj','ttj','vv','ggh','bbh'])
+		))
+
 def sample2process(sample):
 	tmp_sample = re.match("(?P<sample>[^0-9]*).*", sample).groupdict().get("sample", "")
 	return sample.replace(tmp_sample, dict([reversed(item) for item in mapping_process2sample.iteritems()]).get(tmp_sample, tmp_sample))
@@ -276,6 +333,8 @@ if __name__ == "__main__":
 	                    help="Higgs masses. [Default: %(default)s]")
 	parser.add_argument("-s", "--samples", nargs="+", default=[],
 	                    help="Samples used. [Default: %(default)s]")
+	parser.add_argument("-sc", "--samples-config", nargs="+", choices = ["all", "limits", "btag", "metrecoil", "metenergy", "jec"], default=["limits"],
+	                    help="Choose sample selection depending on datacard purposes. [Default: %(default)s]")
 	parser.add_argument("-x", "--quantity", default="0",
 	                    help="Quantity. [Default: %(default)s]")
 	parser.add_argument("--bbh-nlo", default=False, action="store_true",
@@ -332,6 +391,8 @@ if __name__ == "__main__":
 		import HiggsAnalysis.KITHiggsToTauTau.plotting.configs.samples_run2_2015 as samples
 	else:
 		import HiggsAnalysis.KITHiggsToTauTau.plotting.configs.samples_run2_2016 as samples
+	
+	fill_samples_dict(args.samples_config)
 	
 	if args.fakefactor_method is not None:
 		for channel in ['mt','et','tt']:
@@ -639,7 +700,7 @@ if __name__ == "__main__":
 						
 						config["x_expressions"] = [args.quantity.format(mass=mass)] if args.mass_dependent else [args.quantity]
 						
-						binnings_key = "binningHttMSSM13TeV_"+category+"_"+(args.quantity.format(mass=mass) if args.mass_dependent else args.quantity)
+						binnings_key = "binningHttMSSM13TeV_"+category+"_"+(args.quantity.format(mass=mass) if args.mass_dependent else "mt_tot")#args.quantity)
 						if binnings_key in binnings_settings.binnings_dict:
 							config["x_bins"] = [binnings_key]
 						else:
