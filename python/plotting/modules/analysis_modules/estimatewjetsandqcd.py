@@ -102,9 +102,11 @@ class EstimateWjetsAndQCD(estimatebase.EstimateBase):
 						assert isinstance(plotData.plotdict["root_objects"].get(subnick), ROOT.TH1)
 		# do not check because it's allowed to be None
 		self._plotdict_keys.append("wjets_wj_final_selection") 
+		self._plotdict_keys.append("wjets_relaxed_ss_lowmt_wj_nicks")
 		self._plotdict_keys.append("wjets_relaxed_ss_wj_nicks")
 		self._plotdict_keys.append("wjets_relaxed_ss_data_nicks")
 		self._plotdict_keys.append("wjets_relaxed_ss_subtract_nicks")
+		self._plotdict_keys.append("wjets_relaxed_ss_highmt_mc_nicks")
 		self._plotdict_keys.append("wjets_relaxed_os_lowmt_wj_nicks")
 		self._plotdict_keys.append("wjets_relaxed_os_wj_nicks")
 		self._plotdict_keys.append("wjets_relaxed_os_data_nicks")
@@ -118,98 +120,62 @@ class EstimateWjetsAndQCD(estimatebase.EstimateBase):
 		super(EstimateWjetsAndQCD, self).run(plotData)
 
 
-		for qcd_extrapolation_factor_ss_os, qcd_shape_nick, qcd_ss_lowmt_nick, qcd_ss_highmt_shape_nick, qcd_os_highmt_nick, qcd_shape_highmt_substract_nick, qcd_yield_nick, qcd_shape_substract_nick, qcd_yield_substract_nick, wjets_ss_mc_nick, wjets_os_mc_nick, wjets_os_highmt_mc_nick, wjets_os_lowmt_mc_nick, wjets_ss_lowmt_mc_nick, wjets_ss_highmt_mc_nick, wjets_ss_substract_nick, wjets_ss_data_nick, wjets_os_substract_nick, wjets_os_data_nick, wjets_shape_nick, wjets_final_selection, wjets_relaxed_ss_wj_nick, wjets_relaxed_ss_data_nick, wjets_relaxed_ss_subtract_nick, wjets_relaxed_os_lowmt_wj_nick, wjets_relaxed_os_wj_nick, wjets_relaxed_os_data_nick, wjets_relaxed_os_subtract_nick, wjets_relaxed_os_highmt_mc_nick in zip(*[plotData.plotdict[key] for key in self._plotdict_keys]):
+		for qcd_extrapolation_factor_ss_os, qcd_shape_nick, qcd_ss_lowmt_nick, qcd_ss_highmt_shape_nick, qcd_os_highmt_nick, qcd_shape_highmt_substract_nick, qcd_yield_nick, qcd_shape_substract_nick, qcd_yield_substract_nick, wjets_ss_mc_nick, wjets_os_mc_nick, wjets_os_highmt_mc_nick, wjets_os_lowmt_mc_nick, wjets_ss_lowmt_mc_nick, wjets_ss_highmt_mc_nick, wjets_ss_substract_nick, wjets_ss_data_nick, wjets_os_substract_nick, wjets_os_data_nick, wjets_shape_nick, wjets_final_selection, wjets_relaxed_ss_lowmt_wj_nick, wjets_relaxed_ss_wj_nick, wjets_relaxed_ss_data_nick, wjets_relaxed_ss_subtract_nick, wjets_relaxed_ss_highmt_mc_nick, wjets_relaxed_os_lowmt_wj_nick, wjets_relaxed_os_wj_nick, wjets_relaxed_os_data_nick, wjets_relaxed_os_subtract_nick, wjets_relaxed_os_highmt_mc_nick in zip(*[plotData.plotdict[key] for key in self._plotdict_keys]):
 			if (wjets_relaxed_ss_wj_nick and wjets_relaxed_ss_data_nick and wjets_relaxed_ss_subtract_nick and wjets_relaxed_os_wj_nick and wjets_relaxed_os_data_nick and wjets_relaxed_os_subtract_nick):
 				# estimate W+jets
 				yield_ss_control = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_data_nick])()
-				print "ss control ", yield_ss_control
 				for nick in wjets_ss_substract_nick:
 					yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
-					print nick, " ", yield_bkg_control
 					yield_ss_control -= yield_bkg_control
-				print "ss control ", yield_ss_control
 				yield_relaxed_ss_control = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_ss_data_nick])()
-				print "----"
-				print "ss relaxed control ", yield_relaxed_ss_control
 				for nick in wjets_relaxed_ss_subtract_nick:
 					yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
-					print nick, " ", yield_bkg_control
 					yield_relaxed_ss_control -= yield_bkg_control
-				print "ss relaxed control ", yield_relaxed_ss_control
 				yield_relaxed_os_control = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_os_data_nick])()
-				print "----"
-				print "os relaxed control ", yield_relaxed_os_control
 				for nick in wjets_relaxed_os_subtract_nick:
 					yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
-					print nick, " ", yield_bkg_control
 					yield_relaxed_os_control -= yield_bkg_control
-				print "os relaxed control ", yield_relaxed_os_control
 
 				wjets_extrapolation_factor_ss_os = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_mc_nick])()
 				if wjets_relaxed_os_highmt_mc_nick:
-					wjets_extrapolation_factor_mt = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_lowmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_os_highmt_mc_nick])()
+					wjets_extrapolation_factor_mt = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_os_lowmt_wj_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_os_highmt_mc_nick])()
 				else:
 					wjets_extrapolation_factor_mt = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_lowmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick])()
-				print "wj os ", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_mc_nick])()
-				print "wj ss ", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_mc_nick])()
-				print "os/ss factor ", wjets_extrapolation_factor_ss_os
-				print "wj lowmt ", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_lowmt_mc_nick])()
-				print "wj highmt ", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick])()
-				print "mt factor ", wjets_extrapolation_factor_mt
-				
+				if wjets_relaxed_ss_highmt_mc_nick:
+                                        wjets_extrapolation_factor_mt_ss = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_ss_lowmt_wj_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_ss_highmt_mc_nick])()
+				else:
+                                        wjets_extrapolation_factor_mt_ss = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_lowmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_highmt_mc_nick])()
 				wjets_extrapolation_factor_relaxed_highmt = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_os_wj_nick])()
+				wjets_extrapolation_factor_relaxed_highmt_ss = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_highmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_ss_wj_nick])()
 				wjets_extrapolation_factor_relaxed_lowmt = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_shape_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_os_lowmt_wj_nick])()
-				print "relaxed highmt factor ", wjets_extrapolation_factor_relaxed_highmt
-				print "relaxed lowmt factor ", wjets_extrapolation_factor_relaxed_lowmt
+				wjets_extrapolation_factor_relaxed_lowmt_ss = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_lowmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_relaxed_ss_lowmt_wj_nick])()
 
 				wjets_yield_relaxed_ss_highmt = (yield_relaxed_os_control-qcd_extrapolation_factor_ss_os*yield_relaxed_ss_control)/(wjets_extrapolation_factor_ss_os-qcd_extrapolation_factor_ss_os)
 				wjets_yield_relaxed_os_highmt = wjets_yield_relaxed_ss_highmt*wjets_extrapolation_factor_ss_os
-				print "wjets yield relaxed os highmt", wjets_yield_relaxed_os_highmt
-				print "wjets yield relaxed ss highmt", wjets_yield_relaxed_ss_highmt
 
-				wjets_yield_ss_highmt = wjets_yield_relaxed_ss_highmt*wjets_extrapolation_factor_relaxed_highmt
+				wjets_yield_ss_highmt = wjets_yield_relaxed_ss_highmt*wjets_extrapolation_factor_relaxed_highmt_ss
 				wjets_yield_os_highmt = wjets_yield_relaxed_os_highmt*wjets_extrapolation_factor_relaxed_highmt
-				wjets_yield_ss_lowmt = wjets_yield_relaxed_ss_highmt*wjets_extrapolation_factor_relaxed_lowmt*wjets_extrapolation_factor_mt
+				wjets_yield_ss_lowmt = wjets_yield_relaxed_ss_highmt*wjets_extrapolation_factor_relaxed_lowmt_ss*wjets_extrapolation_factor_mt_ss
 				wjets_yield_os_lowmt = wjets_yield_relaxed_os_highmt*wjets_extrapolation_factor_relaxed_lowmt*wjets_extrapolation_factor_mt
-				print "wjets yield os highmt", wjets_yield_os_highmt
-				print "wjets yield ss highmt", wjets_yield_ss_highmt
-				print "wjets yield os lowmt", wjets_yield_os_lowmt
-				print "wjets yield ss lowmt", wjets_yield_ss_lowmt
 			else:
 				# estimate W+jets
 				yield_ss_control = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_data_nick])()
-				print "ss control ", yield_ss_control
 				for nick in wjets_ss_substract_nick:
 					yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
-					print nick, " ", yield_bkg_control
 					yield_ss_control -= yield_bkg_control
-				print "ss control ", yield_ss_control
 				yield_os_control = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_data_nick])()
-				print "----"
-				print "os control ", yield_os_control
 				for nick in wjets_os_substract_nick:
 					yield_bkg_control = tools.PoissonYield(plotData.plotdict["root_objects"][nick])()
-					print nick, " ", yield_bkg_control
 					yield_os_control -= yield_bkg_control
-				print "os control ", yield_os_control
 
 				wjets_extrapolation_factor_ss_os = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_mc_nick])()
 				wjets_extrapolation_factor_mt = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_lowmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick])()
-				print "wj os ", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_mc_nick])()
-				print "wj ss ", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_mc_nick])()
-				print "os/ss factor ", wjets_extrapolation_factor_ss_os
-				print "wj lowmt ", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_lowmt_mc_nick])()
-				print "wj highmt ", tools.PoissonYield(plotData.plotdict["root_objects"][wjets_os_highmt_mc_nick])()
-				print "mt factor ", wjets_extrapolation_factor_mt
+				wjets_extrapolation_factor_mt_ss = tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_lowmt_mc_nick])()/tools.PoissonYield(plotData.plotdict["root_objects"][wjets_ss_highmt_mc_nick])()
 
 				wjets_yield_ss_highmt = (yield_os_control-qcd_extrapolation_factor_ss_os*yield_ss_control)/(wjets_extrapolation_factor_ss_os-qcd_extrapolation_factor_ss_os)
 				wjets_yield_os_highmt = wjets_yield_ss_highmt*wjets_extrapolation_factor_ss_os
-				wjets_yield_ss_lowmt = wjets_yield_ss_highmt*wjets_extrapolation_factor_mt
+				wjets_yield_ss_lowmt = wjets_yield_ss_highmt*wjets_extrapolation_factor_mt_ss
 				wjets_yield_os_lowmt = wjets_yield_os_highmt*wjets_extrapolation_factor_mt
-				print "wjets yield os highmt", wjets_yield_os_highmt
-				print "wjets yield ss highmt", wjets_yield_ss_highmt
-				print "wjets yield os lowmt", wjets_yield_os_lowmt
-				print "wjets yield ss lowmt", wjets_yield_ss_lowmt
 
 			# extrapolate to final selection
 			if wjets_final_selection != None:

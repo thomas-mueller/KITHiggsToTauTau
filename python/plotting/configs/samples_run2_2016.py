@@ -1048,8 +1048,10 @@ class Samples(samples.SamplesBase):
 		if channel in ["mt", "et"]:
 			high_mt_cut_type = cut_type + "highMtControlRegionWJ"
 			high_mt_ss_cut_type = cut_type + "highMtSSControlRegionWJ"
+                        ss_cut_type = cut_type + "lowMtSSControlRegionWJ"
 			exclude_cuts_high_mt = [cut for cut in exclude_cuts if cut not in ["mt"]]
 			exclude_cuts_high_mt_ss = copy.deepcopy(exclude_cuts_high_mt)+["os"]
+                        exclude_cuts_ss = copy.deepcopy(exclude_cuts)+["os"]
 			exclude_cuts_inclusive = copy.deepcopy(exclude_cuts)+["mt"]
 			exclude_cuts_inclusive_ss = copy.deepcopy(exclude_cuts_inclusive)+["os"]
 			
@@ -1381,15 +1383,35 @@ class Samples(samples.SamplesBase):
 						("noplot_" if not controlregions else "") + "data_ss_highmt",
 						nick_suffix=nick_suffix
 				)
-				Samples._add_input(
-						config,
-						self.files_wj(channel),
-						self.root_file_folder(channel),
-						lumi,
-						mc_weight+"*"+wj_weight+"*eventWeight*"+self.wj_stitchingweight()+"*"+self._cut_string(channel, exclude_cuts=exclude_cuts_high_mt_ss, cut_type=high_mt_ss_cut_type),
-						("noplot_" if not controlregions else "") + "wj_ss_highmt",
-						nick_suffix=nick_suffix
-				)
+				if is_btag_category:
+					Samples._add_input(
+							config,
+							self.files_wj(channel),
+							self.root_file_folder(channel),
+							lumi,
+							mc_weight+"*"+relaxed_wj_weight+"*eventWeight*"+self.wj_stitchingweight()+"*"+self._cut_string(channel, exclude_cuts=exclude_cuts_high_mt_ss, cut_type=high_mt_ss_cut_type),
+							"noplot_wj_relaxed_ss_highmt",
+							nick_suffix=nick_suffix
+					)
+					Samples._add_input(
+							config,
+							self.files_wj(channel),
+							self.root_file_folder(channel),
+							lumi,
+							mc_weight+"*"+wj_weight+"*eventWeight*"+self.wj_stitchingweight()+"*"+self._cut_string(channel, exclude_cuts=exclude_cuts_high_mt_ss, cut_type=high_mt_ss_cut_type),
+							("noplot_" if not controlregions else "") + "wj_ss_highmt",
+							nick_suffix=nick_suffix
+					)
+				else:
+                                        Samples._add_input(
+                                                        config,
+                                                        self.files_wj(channel),
+                                                        self.root_file_folder(channel),
+                                                        lumi,
+                                                        mc_weight+"*"+wj_weight+"*eventWeight*"+self.wj_stitchingweight()+"*"+self._cut_string(channel, exclude_cuts=exclude_cuts_high_mt_ss, cut_type=high_mt_ss_cut_type),
+                                                        ("noplot_" if not controlregions else "") + "wj_ss_highmt",
+                                                        nick_suffix=nick_suffix
+                                        )
 				if (not kwargs.get("no_ewk_samples", False)):
 					Samples._add_input(
 							config,
@@ -1544,6 +1566,15 @@ class Samples(samples.SamplesBase):
 							self.files_wj(channel),
 							self.root_file_folder(channel),
 							lumi,
+							mc_weight+"*"+relaxed_wj_weight+"*eventWeight*"+self.wj_stitchingweight()+"*"+self._cut_string(channel, exclude_cuts=exclude_cuts_ss, cut_type=ss_cut_type),
+							"noplot_wj_relaxed_ss_lowmt_selection",
+							nick_suffix=nick_suffix
+					)
+					Samples._add_input(
+							config,
+							self.files_wj(channel),
+							self.root_file_folder(channel),
+							lumi,
 							mc_weight+"*"+relaxed_wj_weight+"*eventWeight*"+self.wj_stitchingweight()+"*"+self._cut_string(channel, exclude_cuts=exclude_cuts_high_mt_ss, cut_type=high_mt_ss_cut_type),
 							"noplot_wj_relaxed_ss_selection",
 							nick_suffix=nick_suffix
@@ -1672,9 +1703,11 @@ class Samples(samples.SamplesBase):
 					config.setdefault("wjets_os_lowmt_mc_nicks", []).append("noplot_wj_os_lowmt"+nick_suffix)
 					config.setdefault("wjets_ss_lowmt_mc_nicks", []).append("wj_ss_lowmt"+nick_suffix)
 					config.setdefault("wjets_wj_final_selection", []).append(("noplot_wj_final_selection"+nick_suffix) if "newKIT" in estimationMethod else None)
+					config.setdefault("wjets_relaxed_ss_lowmt_wj_nicks", []).append("noplot_wj_relaxed_ss_lowmt_selection" if is_btag_category else None)
 					config.setdefault("wjets_relaxed_ss_wj_nicks", []).append("noplot_wj_relaxed_ss_selection" if is_btag_category else None)
 					config.setdefault("wjets_relaxed_ss_data_nicks", []).append("noplot_data_relaxed_ss_selection" if is_btag_category else None)
 					config.setdefault("wjets_relaxed_ss_subtract_nicks", []).append(" ".join(["noplot_"+nick+nick_suffix for nick in "ztt_relaxed_ss_selection zll_relaxed_ss_selection ttj_relaxed_ss_selection vv_relaxed_ss_selection".split()]) if is_btag_category else None)
+					config.setdefault("wjets_relaxed_ss_highmt_mc_nicks", []).append("noplot_wj_relaxed_ss_highmt" if is_btag_category else None)
 					config.setdefault("wjets_relaxed_os_lowmt_wj_nicks", []).append("noplot_wj_relaxed_os_lowmt_selection" if is_btag_category else None)
 					config.setdefault("wjets_relaxed_os_wj_nicks", []).append("noplot_wj_relaxed_os_selection" if is_btag_category else None)
 					config.setdefault("wjets_relaxed_os_data_nicks", []).append("noplot_data_relaxed_os_selection" if is_btag_category else None)
@@ -2787,9 +2820,9 @@ class Samples(samples.SamplesBase):
 		return config
 
 	def files_bbh(self, channel, mass=125):
-		file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : self.mc_campaign}, 1)
+		file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : self.mc_campaign, "generator" : "pythia8"}, 1)
 		if self.bbh_nlo:
-			file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : "agilbertSummer16"})
+			file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : self.mc_campaign, "generator" : "amcatnlo-pythia8"}, 1))
 		return file_names
 
 	def bbh(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", **kwargs):

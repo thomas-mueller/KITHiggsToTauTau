@@ -106,7 +106,7 @@ shapes_weight_dict = {
 		"taues3prong0pi" : ("1.0", "1.0"),
 		"etaues1prong0pi" : ("1.0", "1.0"),
 		"etaues1prong1pi" : ("1.0", "1.0"),
-		"wfake" : ("((gen_match_1 != 6) + (gen_match_1 == 6)*(1-0.002*pt_1))*((gen_match_2 != 6) + (gen_match_2 == 6)*(1-0.002*pt_2))", "((gen_match_1 != 6) + (gen_match_1 == 6)*(1+0.002*pt_1))*((gen_match_2 != 6) + (gen_match_2 == 6)*(1+0.002*pt_2))"),
+		"wfake" : ("((gen_match_1 != 6) + (gen_match_1 == 6)*(1+0.002*pt_1))*((gen_match_2 != 6) + (gen_match_2 == 6)*(1+0.002*pt_2))", "((gen_match_1 != 6) + (gen_match_1 == 6)*(1-0.002*pt_1))*((gen_match_2 != 6) + (gen_match_2 == 6)*(1-0.002*pt_2))"),
 		"ff_qcd_syst" : ("jetToTauFakeWeight_qcd_syst_down/jetToTauFakeWeight_comb", "jetToTauFakeWeight_qcd_syst_up/jetToTauFakeWeight_comb"),
 		"ff_qcd_dm0_njet0_stat" : ("jetToTauFakeWeight_qcd_dm0_njet0_stat_down/jetToTauFakeWeight_comb", "jetToTauFakeWeight_qcd_dm0_njet0_stat_up/jetToTauFakeWeight_comb"),
 		"ff_qcd_dm0_njet1_stat" : ("jetToTauFakeWeight_qcd_dm0_njet1_stat_down/jetToTauFakeWeight_comb", "jetToTauFakeWeight_qcd_dm0_njet1_stat_up/jetToTauFakeWeight_comb"),
@@ -532,8 +532,12 @@ if __name__ == "__main__":
 						for index,value in enumerate(config["weights"]):
 							if not "Run201" in config["files"][index] or args.fakefactor_method is not None:
 								# exclude ff-norm samples from additional weights
-								if not "ff_norm" in config["nicks"][index]:
-									config["weights"][index] += "*"+additional_weight
+                                                                if not "wfake" == shape_systematic:
+                                                                    if not "ff_norm" in config["nicks"][index] and not "data_os_highmt" == config["nicks"][index] and not "data_ss_highmt" == config["nicks"][index] and not "data_ss_lowmt" == config["nicks"][index] and not "qcd_ss_highmt" == config["nicks"][index] and not "qcd" == config["nicks"][index] and not "qcd_os_highmt" == config["nicks"][index] and not "qcd_ss_lowmt" == config["nicks"][index]:
+                                                                            config["weights"][index] += "*"+additional_weight
+                                                                else:
+                                                                    if "WJets" in config["files"][index]:
+                                                                            config["weights"][index] += "*"+additional_weight
 
 						# modify cut for ff samples. Cut string does not include tau iso
 						# also need to replace ff weight with channel specific weights

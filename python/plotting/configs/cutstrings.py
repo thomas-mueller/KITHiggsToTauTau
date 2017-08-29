@@ -433,6 +433,15 @@ class CutStringsDict:
 		return cuts
 
 	@staticmethod
+	def lowMtSSControlRegionWJ(channel, cut_type):
+		if channel in ["mt", "et"]:
+			cuts = CutStringsDict._get_cutdict(channel, cut_type.replace("lowMtSSControlRegionWJ",""))
+			cuts["ss"] = "((q_1*q_2)>0.0)"
+		else:
+			log.fatal("No cut values implemented for channel \"%s\" in \"%s\"" % (channel, cut_type))
+			sys.exit(1)
+		return cuts
+	@staticmethod
 	def baseline_low_mvis(channel, cut_type):
 		if channel== "gen":
 			cuts = {}
@@ -576,7 +585,8 @@ class CutStringsDict:
 			cuts = CutStringsDict.highMtControlRegionWJ(channel, cut_type)
 		elif "highMtSSControlRegionWJ" in cut_type:
 			cuts = CutStringsDict.highMtSSControlRegionWJ(channel, cut_type)
-		
+		elif "lowMtSSControlRegionWJ" in cut_type:
+			cuts = CutStringsDict.lowMtSSControlRegionWJ(channel, cut_type)
 		elif cut_type=="baseline_low_mvis":
 			cuts = CutStringsDict.baseline_low_mvis(channel, cut_type)
 		elif cut_type=="baseline_low_mvis2016":
