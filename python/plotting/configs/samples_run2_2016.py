@@ -2822,7 +2822,7 @@ class Samples(samples.SamplesBase):
 	def files_bbh(self, channel, mass=125):
 		file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : self.mc_campaign, "generator" : "pythia8"}, 1)
 		if self.bbh_nlo:
-			file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : self.mc_campaign, "generator" : "amcatnlo-pythia8"}, 1))
+			file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : self.mc_campaign, "generator" : "amcatnlo-pythia8"}, 1)
 		return file_names
 
 	def bbh(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", **kwargs):
