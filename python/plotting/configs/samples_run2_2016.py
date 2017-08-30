@@ -244,7 +244,6 @@ class Samples(samples.SamplesBase):
 		self.embedding = embedding
 		self.ttbar_retuned = ttbar_retuned
 		self.embedding_weight = embedding_weight
-		self.bbh_nlo = False
 
 	def get_config(self, samples, channel, category, nick_suffix="", postfit_scales=None, **kwargs):
 		config = super(Samples, self).get_config(samples, channel, category, nick_suffix=nick_suffix, postfit_scales=postfit_scales, **kwargs)
@@ -252,7 +251,6 @@ class Samples(samples.SamplesBase):
 		# execute bin correction modules after possible background estimation modules
 		if not kwargs.get("mssm", False):
 			config.setdefault("analysis_modules", []).sort(key=lambda module: module in ["BinErrorsOfEmptyBins", "CorrectNegativeBinContents"])
-		self.bbh_nlo = kwargs.get("bbh_nlo",False)
 		return config
 
 	def projection(self, kwargs):
@@ -2820,9 +2818,7 @@ class Samples(samples.SamplesBase):
 		return config
 
 	def files_bbh(self, channel, mass=125):
-		file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : self.mc_campaign, "generator" : "pythia8"}, 1)
-		if self.bbh_nlo:
-			file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : self.mc_campaign, "generator" : "amcatnlo-pythia8"}, 1)
+                file_names = self.artus_file_names({"process" : "SUSYGluGluToBBHToTauTau_M"+str(mass), "data": False, "campaign" : self.mc_campaign, "generator" : "amcatnlo-pythia8"}, 1)
 		return file_names
 
 	def bbh(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", **kwargs):
@@ -2834,8 +2830,6 @@ class Samples(samples.SamplesBase):
 			scale_factor *= self.postfit_scales.get("bbh", 1.0)
 
 		data_weight, mc_weight = self.projection(kwargs) 
-		if self.bbh_nlo:
-			higgs_masses = ["80","130","200","350","700","1200","1800","3200"]
 
 		for mass in higgs_masses:
 			if channel in ["tt", "et", "mt", "em"]:

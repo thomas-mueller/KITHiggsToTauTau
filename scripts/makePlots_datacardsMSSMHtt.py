@@ -337,8 +337,6 @@ if __name__ == "__main__":
 	                    help="Choose sample selection depending on datacard purposes. [Default: %(default)s]")
 	parser.add_argument("-x", "--quantity", default="0",
 	                    help="Quantity. [Default: %(default)s]")
-	parser.add_argument("--bbh-nlo", default=False, action="store_true",
-	                    help="Enables using NLO bbh samples. [Default: %(default)s]")
 	parser.add_argument("--lumi", type=float, default=None,
 	                    help="Luminosity for the given data in fb^(-1). [Default: %(default)s]")
 	parser.add_argument("-e", "--era", default="",
@@ -507,8 +505,7 @@ if __name__ == "__main__":
 								fakefactor_method=args.fakefactor_method,
 								cut_type=cut_type,
 								no_ewk_samples = True,
-								no_ewkz_as_dy = True,
-								bbh_nlo = args.bbh_nlo
+								no_ewkz_as_dy = True
 						)
 						
 						# systematics_settings = systematics_factory.get(shape_systematic)(config)
@@ -767,8 +764,7 @@ if __name__ == "__main__":
 									fakefactor_method=args.fakefactor_method,
 									cut_type=cut_type,
 									no_ewk_samples = True,
-									no_ewkz_as_dy = True,
-									bbh_nlo = args.bbh_nlo
+									no_ewkz_as_dy = True
 							)
 							
 							if args.workingpoint:
