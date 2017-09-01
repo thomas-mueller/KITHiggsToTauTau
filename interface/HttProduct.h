@@ -368,4 +368,16 @@ public:
         KLepton* m_cleanedMuonForWJetsErsatz = nullptr;
         KLepton* m_leftMuonForWJetsErsatz = nullptr;
         KLepton* m_leftCorrectedMuonForWJetsErsatz = nullptr;
+	
+	//filled by NLOreweightingWeightsProducer
+	double m_ggh_t_weight = 1.0;
+	double m_ggh_b_weight = 1.0;
+	double m_ggh_i_weight = 1.0;
+	double m_ggH_t_weight = 1.0;
+	double m_ggH_b_weight = 1.0;
+	double m_ggH_i_weight = 1.0;
+	double m_ggA_t_weight = 1.0;
+	double m_ggA_b_weight = 1.0;
+	double m_ggA_i_weight = 1.0;
+	
 };
