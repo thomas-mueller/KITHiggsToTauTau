@@ -2913,10 +2913,39 @@ class Samples(samples.SamplesBase):
 						"LINE",
 						"L",
 						"ggh"+str(kwargs.get("cp", ""))+str(mass)+("_"+str(int(kwargs["scale_signal"])) if kwargs.get("scale_signal", 1.0) != 1.0 else ""),
-						str(kwargs.get("cp", ""))+nick_suffix
+						str(kwargs.get("cp", ""))+nick_suffix,
+						kwargs.get("linestyle", 1)
 				)
 		return config 
-
+	def ggh_t(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
+		config = self.ggh( config, channel, category, weight+"*ggh_t_weight", "_h_t"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, stacks="ggh_t", linestyle=4, **kwargs)
+		return config
+	def ggh_b(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
+		config = self.ggh( config, channel, category, weight+"*ggh_b_weight", "_h_b"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, stacks="ggh_b", linestyle=7, **kwargs)
+		return config
+	def ggh_i(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
+		config = self.ggh( config, channel, category, weight+"*ggh_i_weight", "_h_i"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, stacks="ggh_i", linestyle=6, **kwargs)
+		return config
+	def ggH_t(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
+		config = self.ggh( config, channel, category, weight+"*ggH_t_weight", "_H_t"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, stacks="ggH_t", linestyle=4, **kwargs)
+		return config
+	def ggH_b(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
+		config = self.ggh( config, channel, category, weight+"*ggH_b_weight", "_H_b"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, stacks="ggH_b", linestyle=7, **kwargs)
+		return config
+	def ggH_i(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
+		config = self.ggh( config, channel, category, weight+"*ggH_i_weight", "_H_i"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, stacks="ggH_i", linestyle=6, **kwargs)
+		return config
+	def ggA_t(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
+		config = self.ggh( config, channel, category, weight+"*ggA_t_weight", "_A_t"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, stacks="ggA_t", linestyle=4, **kwargs)
+		return config
+	def ggA_b(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
+		config = self.ggh( config, channel, category, weight+"*ggA_b_weight", "_A_b"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, stacks="ggA_b", linestyle=7, **kwargs)
+		return config
+	def ggA_i(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
+		config = self.ggh( config, channel, category, weight+"*ggA_i_weight", "_A_i"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, stacks="ggA_i", linestyle=6, **kwargs)
+		return config
+	
+	
 	def gghsm(self, config, channel, category, weight, nick_suffix, higgs_masses, normalise_signal_to_one_pb=False, lumi=default_lumi, exclude_cuts=None, cut_type="baseline", mssm=False, **kwargs):
 		config = self.ggh( config, channel, category, weight, "sm"+nick_suffix, higgs_masses, normalise_signal_to_one_pb=normalise_signal_to_one_pb, lumi=lumi, exclude_cuts=exclude_cuts, cut_type=cut_type, mssm=mssm, cp="sm", stacks="gghsm", **kwargs)
 		return config

@@ -107,7 +107,7 @@ if __name__ == "__main__":
 	parser.add_argument("-s", "--samples", nargs="+",
 	                    default=["ztt", "zll", "ttj", "vv", "wj", "qcd", "data"],
 	                    choices=["ztt", "zttpospol", "zttnegpol", "zll", "zl", "zj", "ttj", "ttjt", "ttt", "ttjj", "ttjl","tttautau", "vv", "vvt", "vvj", "vvl", "wj", "wjt", "wjl", "qcd", "ewk", "hww", "hww_gg", "hww_qq", "ff",
-	                             "ggh", "gghsm", "gghmm", "gghps", "qqh", "bbh", "vh", "htt", "data"],
+	                             "ggh", "ggh_t", "ggh_b", "ggh_i", "ggH_t", "ggH_b", "ggH_i", "ggA_t", "ggA_b", "ggA_i", "gghsm", "gghmm", "gghps", "qqh", "bbh", "vh", "htt", "data"],
 	                    help="Samples. [Default: %(default)s]")
 	parser.add_argument("--stack-signal", default=False, action="store_true",
 	                    help="Draw signal (htt) stacked on top of each backgrounds. [Default: %(default)s]")

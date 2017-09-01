@@ -136,11 +136,12 @@ class SamplesBase(object):
 		return config
 		
 	@staticmethod
-	def _add_plot(config, stack, marker, legend_marker, color_label_key, nick_suffix=""):
+	def _add_plot(config, stack, marker, legend_marker, color_label_key, nick_suffix="", linestyle=1):
 		config.setdefault("stacks", []).append(stack)
 		config.setdefault("markers", []).append(marker)
 		config.setdefault("legend_markers", []).append(legend_marker)
 		config.setdefault("colors", []).append(color_label_key)
-		config.setdefault("labels", []).append(color_label_key)
+		config.setdefault("labels", []).append(color_label_key+nick_suffix)
+		config.setdefault("line_styles", []).append(linestyle)
 		return config
 

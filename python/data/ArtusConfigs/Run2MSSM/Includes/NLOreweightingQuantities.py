@@ -20,7 +20,8 @@ def build_list():
     "ggH_i_weight",
     "ggA_t_weight",
     "ggA_b_weight",
-    "ggA_i_weight"
+    "ggA_i_weight",
+    "genBosonPt"
 	]
   
   return quantities_list
