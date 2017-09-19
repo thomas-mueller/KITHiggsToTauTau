@@ -27,6 +27,7 @@ def build_config(nickname):
   isDY = re.search("DY.?JetsToLLM(50|150)", nickname)
   isWjets = re.search("W.?JetsToLNu", nickname)
   isHtt = re.search("HToTauTau", nickname)
+  isSUSYggH = re.search("SUSYGluGluToHToTauTau", nickname)
   
   
   ## fill config:
@@ -137,7 +138,8 @@ def build_config(nickname):
   config["Quantities"].extend(importlib.import_module("HiggsAnalysis.KITHiggsToTauTau.data.ArtusConfigs.Includes.weightQuantities").build_list())
   #config["Quantities"].extend(importlib.import_module("HiggsAnalysis.KITHiggsToTauTau.data.ArtusConfigs.Includes.MVAInputQuantities").build_list())
   config["Quantities"].extend(importlib.import_module("HiggsAnalysis.KITHiggsToTauTau.data.ArtusConfigs.Run2MSSM.Includes.zptQuantities").build_list())
-  config["Quantities"].extend(importlib.import_module("HiggsAnalysis.KITHiggsToTauTau.data.ArtusConfigs.Run2MSSM.Includes.NLOreweightingQuantities").build_list())
+  if isSUSYggH:
+    config["Quantities"].extend(importlib.import_module("HiggsAnalysis.KITHiggsToTauTau.data.ArtusConfigs.Run2MSSM.Includes.NLOreweightingQuantities").build_list())
   config["Quantities"].extend([
       "nmediumbtag",
       "had_gen_match_pT_1",
